@@ -1,0 +1,1 @@
+export const CMC_API_KEY = '2deaa67e-178b-4056-b50d-531f42717fc9';
