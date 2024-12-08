@@ -15,10 +15,10 @@ export function Logo({ className, size = "md" }: LogoProps) {
   return (
     <div className={cn("flex items-center gap-2", className)}>
       <h1 className={cn(
-        "font-sans font-extrabold leading-none bg-gradient-to-r from-yellow-500 to-green-500 bg-clip-text text-transparent",
+        "font-sans font-extrabold leading-none text-white",
         sizes[size]
       )}>
-        NextCoinNews.com
+        Next Coin News
       </h1>
     </div>
   );

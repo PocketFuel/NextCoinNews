@@ -1,32 +1,16 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { useFeedStore } from '@/lib/store';
-import { ArticleCard } from '@/components/ArticleCard';
+import { Eye, EyeOff, RefreshCw, Palette } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { RefreshCw, Eye, EyeOff, Newspaper } from 'lucide-react';
+import { ArticleCard } from '@/components/ArticleCard';
 import { TokenBanner } from '@/components/TokenBanner';
+import { useFeedStore } from '@/lib/store';
 
-const feedTitles: Record<string, string> = {
-  'animal-news': 'Animal News',
-  'crypto': 'CoinMarketCap',
-  'instagram': 'Instagram',
-  'market': 'Market Analysis',
-  'news': 'News',
-  'search': 'Targeted Search',
-  'tiktok': 'TikTok',
-  'x-feed': 'X Feed',
-  'youtube': 'YouTube',
-};
-
-export default function FeedPage() {
-  const location = useLocation();
-  const feedId = location.pathname.split('/')[1];
+export default function NFTArt() {
   const { feeds, fetchFeeds } = useFeedStore();
   const [hiddenArticles, setHiddenArticles] = useState<Set<string>>(new Set());
   const [showHidden, setShowHidden] = useState(false);
 
-  const feedKey = feedId.replace(/-/g, '');
-  const articles = feeds[feedKey] || [];
+  const articles = feeds.nftart || [];
   
   const visibleArticles = articles.filter(article => 
     showHidden || !hiddenArticles.has(article.link || article.url)
@@ -55,10 +39,10 @@ export default function FeedPage() {
       </div>
 
       <div className="flex items-center gap-4 pt-8">
-        <Newspaper className="h-10 w-10 text-primary" />
+        <Palette className="h-10 w-10 text-primary" />
         <div>
-          <h1 className="text-4xl font-bold">{feedTitles[feedId]}</h1>
-          <p className="text-muted-foreground">Latest updates and news</p>
+          <h1 className="text-4xl font-bold">NFT & Art</h1>
+          <p className="text-muted-foreground">Latest updates from the NFT and digital art world</p>
         </div>
       </div>
 

@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Eye, EyeOff, RefreshCw } from 'lucide-react';
+import { Eye, EyeOff, RefreshCw, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { XFeedCard } from '@/components/XFeedCard';
+import { TokenBanner } from '@/components/TokenBanner';
 
 export default function XFeed() {
   const [tweets, setTweets] = useState([]);
@@ -52,8 +53,19 @@ export default function XFeed() {
 
   return (
     <div className="space-y-8">
+      <div className="sticky top-0 z-10 -mx-4 bg-background/80 px-4 pb-4 pt-4 backdrop-blur-sm">
+        <TokenBanner />
+      </div>
+
+      <div className="flex items-center gap-4 pt-8">
+        <MessageCircle className="h-10 w-10 text-primary" />
+        <div>
+          <h1 className="text-4xl font-bold">X Feed</h1>
+          <p className="text-muted-foreground">Latest updates from X</p>
+        </div>
+      </div>
+
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">X Feed</h1>
         <div className="flex items-center gap-2">
           <Button
             variant="outline"

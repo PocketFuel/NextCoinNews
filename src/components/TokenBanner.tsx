@@ -16,7 +16,7 @@ export function TokenBanner() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const location = useLocation();
 
-  // Hide Market Predictions on specific pages
+  // Hide Market Overview on specific pages
   const shouldHide = [
     '/notifications', 
     '/blurts', 
@@ -27,7 +27,8 @@ export function TokenBanner() {
     '/settings',
     '/disclaimer',
     '/terms',
-    '/privacy'
+    '/privacy',
+    '/nft-art'
   ].includes(location.pathname);
 
   if (shouldHide) return null;
@@ -70,13 +71,15 @@ export function TokenBanner() {
           </div>
         </div>
         
-        <div className="relative">
+        <div className="relative w-full overflow-hidden">
           <div 
             ref={containerRef}
-            className="flex gap-4 overflow-x-auto scrollbar-none"
+            className="no-scrollbar flex gap-4 overflow-x-auto pb-6"
             style={{
               scrollSnapType: 'x mandatory',
-              WebkitOverflowScrolling: 'touch'
+              WebkitOverflowScrolling: 'touch',
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none'
             }}
           >
             {tokens.map((token, index) => (

@@ -22,10 +22,17 @@ interface HeroSectionProps {
 export function HeroSection({ articles }: HeroSectionProps) {
   if (!articles.length) return null;
 
-  // Deduplicate articles based on URL
+  // Deduplicate articles based on URL and hostname
   const uniqueArticles = articles.reduce((acc, article) => {
     const url = article.link || article.guid;
-    if (!acc.some(a => (a.link || a.guid) === url)) {
+    const hostname = new URL(url).hostname;
+    const key = `${hostname}:${article.title}`;
+    
+    if (!acc.some(a => {
+      const aUrl = a.link || a.guid;
+      const aHostname = new URL(aUrl).hostname;
+      return `${aHostname}:${a.title}` === key;
+    })) {
       acc.push(article);
     }
     return acc;
@@ -109,7 +116,7 @@ export function HeroSection({ articles }: HeroSectionProps) {
                     />
                   </div>
                 )}
-                <div className="flex flex-1 flex-col justify-between p-4">
+                <div className="flex flex-1 flex-col justify-between p-6">
                   <div>
                     <ArticleMetadata article={article} className="text-muted-foreground" />
                     <ArticleAge date={article.pubDate} className="mb-2 mt-2 inline-block" />

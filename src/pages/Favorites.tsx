@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { Star } from 'lucide-react';
 import { useFeedStore } from '@/lib/store';
 import { ArticleCard } from '@/components/ArticleCard';
 import { TokenBanner } from '@/components/TokenBanner';
@@ -19,8 +20,12 @@ export default function Favorites() {
         <TokenBanner />
       </div>
 
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Favorites</h1>
+      <div className="flex items-center gap-4 pt-8">
+        <Star className="h-10 w-10 text-primary" />
+        <div>
+          <h1 className="text-4xl font-bold">Favorites</h1>
+          <p className="text-muted-foreground">Your saved articles and stories</p>
+        </div>
       </div>
 
       {favoriteArticles.length === 0 ? (

@@ -1,3 +1,4 @@
+import { MessageSquare } from 'lucide-react';
 import { useMemo } from 'react';
 import { formatDistanceToNow } from 'date-fns';
 import { useCommentStore, useFeedStore } from '@/lib/store';
@@ -24,8 +25,12 @@ export default function Blurts() {
         <TokenBanner />
       </div>
 
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Blurts Timeline</h1>
+      <div className="flex items-center gap-4 pt-8">
+        <MessageSquare className="h-10 w-10 text-primary" />
+        <div>
+          <h1 className="text-4xl font-bold">Blurts Timeline</h1>
+          <p className="text-muted-foreground">Community discussions and comments</p>
+        </div>
       </div>
 
       <div className="space-y-6">

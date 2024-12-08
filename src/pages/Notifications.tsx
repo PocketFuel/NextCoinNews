@@ -1,7 +1,7 @@
-import { Check } from 'lucide-react';
+import { Bell } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { useNotificationStore } from '@/lib/store';
 import { formatDistanceToNow } from 'date-fns';
 import { TokenBanner } from '@/components/TokenBanner';
@@ -18,22 +18,27 @@ export default function Notifications() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <div className="sticky top-0 z-10 -mx-4 bg-background/80 px-4 pb-4 pt-4 backdrop-blur-sm">
         <TokenBanner />
       </div>
 
+      <div className="flex items-center gap-4 pt-8">
+        <Bell className="h-10 w-10 text-primary" />
+        <div>
+          <h1 className="text-4xl font-bold">Notifications</h1>
+          <p className="text-muted-foreground">Stay updated with the latest alerts</p>
+        </div>
+      </div>
+
       <Card>
-        <CardHeader>
-          <div className="flex items-center justify-between">
-            <CardTitle>Notifications</CardTitle>
+        <CardContent className="pt-6">
+          <div className="mb-6 flex items-center justify-between">
             <Button variant="outline" onClick={markAllAsRead}>
-              <Check className="mr-2 h-4 w-4" />
               Mark all as read
             </Button>
           </div>
-        </CardHeader>
-        <CardContent>
+
           <div className="space-y-4">
             {notifications.length === 0 ? (
               <p className="text-center text-muted-foreground">No notifications</p>
@@ -46,9 +51,6 @@ export default function Notifications() {
                   }`}
                   onClick={() => handleNotificationClick(notification)}
                 >
-                  <div className="rounded-full bg-primary/10 p-2">
-                    <Check className="h-5 w-5 text-primary" />
-                  </div>
                   <div className="flex-1">
                     <div className="mb-1 flex items-center justify-between">
                       <h3 className="font-medium">{notification.title}</h3>

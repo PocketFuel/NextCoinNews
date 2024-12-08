@@ -1,4 +1,4 @@
-import { Bell, Menu, Star, MessageSquare, LineChart } from 'lucide-react';
+import { Bell, Menu, Star, MessageSquare, Trophy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Logo } from './Logo';
@@ -57,7 +57,7 @@ export default function Header({ className, onMenuClick }: HeaderProps) {
             className="h-8 w-8"
             onClick={() => navigate('/leaderboard')}
           >
-            <LineChart className="h-4 w-4" />
+            <Trophy className="h-4 w-4" />
           </Button>
           <Button
             variant="ghost"

@@ -77,7 +77,7 @@ export function ArticleCard({ article, isHidden = false, onHide }: ArticleCardPr
               </div>
             )}
 
-            <div className="flex flex-1 flex-col p-4">
+            <div className="flex flex-1 flex-col p-6">
               <div className="mb-2">
                 <ArticleAge date={article.pubDate} className="inline-block" />
               </div>

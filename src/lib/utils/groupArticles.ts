@@ -20,6 +20,7 @@ interface Story {
 export function groupSimilarArticles(articles: Article[]): Story[] {
   const stories: Story[] = [];
   const processedArticles = new Set<string>();
+  const seenUrls = new Set<string>();
 
   // Sort articles by date, newest first
   const sortedArticles = [...articles].sort((a, b) => {
@@ -28,12 +29,25 @@ export function groupSimilarArticles(articles: Article[]): Story[] {
     return dateB.getTime() - dateA.getTime();
   });
 
-  sortedArticles.forEach((article) => {
+  // Remove duplicates based on URL
+  const uniqueArticles = sortedArticles.filter(article => {
+    const url = article.link;
+    const hostname = new URL(url).hostname;
+    const key = `${hostname}:${article.title}`;
+    
+    if (seenUrls.has(key)) {
+      return false;
+    }
+    seenUrls.add(key);
+    return true;
+  });
+
+  uniqueArticles.forEach((article) => {
     const url = article.link;
     if (processedArticles.has(url)) return;
 
     // Find similar articles
-    const similarArticles = sortedArticles.filter((other) => {
+    const similarArticles = uniqueArticles.filter((other) => {
       const otherUrl = other.link;
       if (processedArticles.has(otherUrl)) return false;
       

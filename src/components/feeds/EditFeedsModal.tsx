@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Plus, Trash2, Check, X, Loader2 } from 'lucide-react';
+import { Plus, Trash2, Check, X } from 'lucide-react';
 import {
   Select,
   SelectContent,
@@ -45,7 +45,6 @@ export function EditFeedsModal({ open, onClose }: EditFeedsModalProps) {
   const [feeds, setFeeds] = useState(defaultFeeds);
   const [showAddForm, setShowAddForm] = useState(false);
   const [newFeed, setNewFeed] = useState({ name: '', section: '' });
-  const [testingFeed, setTestingFeed] = useState(false);
   const [hasChanges, setHasChanges] = useState(false);
 
   const handleToggleFeed = (id: string) => {
@@ -58,12 +57,6 @@ export function EditFeedsModal({ open, onClose }: EditFeedsModalProps) {
   const handleDeleteFeed = (id: string) => {
     setFeeds(feeds.filter(feed => feed.id !== id));
     setHasChanges(true);
-  };
-
-  const handleTestFeed = async () => {
-    setTestingFeed(true);
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setTestingFeed(false);
   };
 
   const handleAddFeed = () => {

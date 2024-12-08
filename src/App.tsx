@@ -14,6 +14,7 @@ import Notifications from '@/pages/Notifications';
 import Favorites from '@/pages/Favorites';
 import FeedPage from '@/pages/FeedPage';
 import XFeed from '@/pages/XFeed';
+import NFTArt from '@/pages/NFTArt';
 import Leaderboard from '@/pages/Leaderboard';
 import Disclaimer from '@/pages/Disclaimer';
 import Terms from '@/pages/Terms';
@@ -23,7 +24,7 @@ import { Toaster } from '@/components/ui/toaster';
 
 export default function App() {
   return (
-    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} forcedTheme="dark">
       <Router>
         <Routes>
           <Route path="/" element={<Layout />}>
@@ -48,6 +49,7 @@ export default function App() {
             <Route path="search" element={<FeedPage />} />
             <Route path="tiktok" element={<FeedPage />} />
             <Route path="x-feed" element={<XFeed />} />
+            <Route path="nft-art" element={<NFTArt />} />
             <Route path="youtube" element={<FeedPage />} />
             <Route path="disclaimer" element={<Disclaimer />} />
             <Route path="terms" element={<Terms />} />

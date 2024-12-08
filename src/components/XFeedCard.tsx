@@ -19,18 +19,16 @@ export function XFeedCard({ tweet, isHidden, onHide }: XFeedCardProps) {
 
   const formatDate = (dateString: string) => {
     try {
-      // Try to parse the ISO date string
       const date = parseISO(dateString);
       return formatDistanceToNow(date, { addSuffix: true });
     } catch (error) {
-      // Fallback to a generic timestamp if parsing fails
       return 'recently';
     }
   };
 
   return (
     <Card className="group relative h-full transform overflow-hidden bg-card transition-all duration-300 hover:bg-card/80 hover:shadow-lg">
-      <div className="flex h-full flex-col p-4">
+      <div className="flex h-full flex-col p-6">
         <div className="mb-3 flex items-center gap-3">
           {tweet.image && (
             <div className="h-12 w-12 overflow-hidden rounded-full">
@@ -62,7 +60,7 @@ export function XFeedCard({ tweet, isHidden, onHide }: XFeedCardProps) {
           )}
         </div>
 
-        <div className="mt-auto flex justify-between border-t border-border pt-3">
+        <div className="mt-auto flex justify-between border-t border-border pt-4">
           <Button variant="ghost" size="sm" className="text-muted-foreground">
             <MessageSquare className="mr-1 h-4 w-4" />
             <span className="text-xs">24</span>
